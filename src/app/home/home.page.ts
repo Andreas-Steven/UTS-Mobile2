@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ItemService } from './item.service';
+import { Item } from './item.model';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,30 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  List      : boolean = true;
+  Products  : Item[];
 
-  constructor() {}
+  constructor(
+    private productService: ItemService
+  ) {}
 
+  ngOnInit(){
+    this.Products = this.productService.getAllProduct();
+  }
+
+  ionViewWillEnter(){
+    this.Products = this.productService.getAllProduct();
+  }
+
+  toggleBtn()
+  {
+    if(this.List)
+    {
+      this.List = false;
+    }
+    else
+    {
+      this.List = true;
+    }
+  }
 }

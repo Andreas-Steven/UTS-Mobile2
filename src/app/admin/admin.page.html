@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="sideMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Admin</ion-title>
+    <ion-buttons slot="end" [routerLink]="['./','create']" >
+      <ion-button>
+        <ion-icon name="add" slot="end"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let product of Products" (click)="EditProduct(product.ID)">
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item-sliding #slidingItem *ngIf="product.Stock != 0">
+          <ion-item-options side="start" (ionSwipe)="PresentAlert(product.ID)"></ion-item-options> <!-- KIRI <- -->
+          
+          <ion-item lines="none">
+            <ion-thumbnail  slot="start">
+              <ion-img [src]="product.ImageURL"></ion-img>
+            </ion-thumbnail >
+            <ion-label>
+              <b>{{product.Brand}} {{product.Model}}</b><br>
+              {{product.Price | currency: 'Rp.':true:'2.0'}}<br>
+              Tersedia: {{product.Stock}}
+            </ion-label>
+          </ion-item>
+
+          <ion-item-options side="end" (ionSwipe)="EditProduct(product.ID)"></ion-item-options> <!-- KANAN -> -->
+          
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

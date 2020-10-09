@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Product Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card style="border-radius: 0px;">
+    <ion-img style="padding-bottom: 25px;" [src]="loadedProduct.ImageURL"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{loadedProduct.Brand}} {{loadedProduct.Model}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div style="font-size: 16px;">Harga &nbsp;&nbsp;&nbsp; : {{loadedProduct.Price | currency: 'Rp ':true:'2.0'}} </div>
+      <div >Tersedia &nbsp; : {{loadedProduct.Stock}}</div>
+
+      <br>
+
+      <div *ngIf="loadedProduct.Type == 'CPU'" style="font-size: 20px;"><strong>Tentang Produk</strong></div>
+      <div *ngIf="loadedProduct.Type == 'CPU'" style="font-size: 16px;">Base Clock &nbsp;&nbsp;&nbsp; : {{loadedProduct.BaseClock}} Ghz</div>
+      <div *ngIf="loadedProduct.Type == 'CPU'" style="font-size: 16px;">Boost Clock &nbsp;&nbsp; : {{loadedProduct.BoostClock}} Ghz</div>  
+      <div *ngIf="loadedProduct.Type == 'CPU'" style="font-size: 16px;">Core &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{loadedProduct.Core}} Cores</div>
+      <div *ngIf="loadedProduct.Type == 'CPU'" style="font-size: 16px;">Thread &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{loadedProduct.Thread}} Threads</div>
+
+      <div *ngIf="loadedProduct.Type == 'RAM'" style="font-size: 20px;"><strong>Tentang Produk</strong></div>
+      <div *ngIf="loadedProduct.Type == 'RAM'" style="font-size: 16px;">Speed &nbsp;&nbsp; : {{loadedProduct.Speed}} Mhz</div>
+      <div *ngIf="loadedProduct.Type == 'RAM'" style="font-size: 16px;">Size &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{loadedProduct.Size}} GB</div>
+      
+      <div *ngIf="loadedProduct.Type == 'Motherboard'" style="font-size: 20px;"><strong>Tentang Produk</strong></div>
+      <div *ngIf="loadedProduct.Type == 'Motherboard'" style="font-size: 16px;">Chipset &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{loadedProduct.Chipset}}</div>
+      <div *ngIf="loadedProduct.Type == 'Motherboard'" style="font-size: 16px;">Processor &nbsp; : {{loadedProduct.SupportedProcessor}}</div>
+
+      <div *ngIf="loadedProduct.Type == 'GPU'" style="font-size: 20px;"><strong>Tentang Produk</strong></div>
+      <div *ngIf="loadedProduct.Type == 'GPU'" style="font-size: 16px;">Model &nbsp;&nbsp;&nbsp; : {{loadedProduct.Model}}</div>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
